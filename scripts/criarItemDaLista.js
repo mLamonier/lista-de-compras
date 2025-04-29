@@ -1,3 +1,8 @@
+//EXPORTAÇÃO PADRÃO
+//importação do arquivo js inteiro (é necessário export default nomeFunção no arquivo)
+//o nome do import pode ser qualquer um, não precisa ser necessariamente o mesmo da function
+import gerarDiaDaSemana from "./gerarDiaDaSemana.js";
+
 const inputItem = document.getElementById('input-item');
 let contador = 0;
 
@@ -32,16 +37,7 @@ export function criarItemDaLista(){ //comando export serve para poder importar e
 
     itemDaLista.appendChild(containerItemDaLista);
 
-    let diaDaSemana = new Date().toLocaleDateString('pt-br', {
-        weekday: 'long'
-    });
-    diaDaSemana = diaDaSemana[0].toUpperCase() + diaDaSemana.substring(1);
-    const data = new Date().toLocaleDateString('pt-br');
-    const hora = new Date().toLocaleTimeString('pt-br', {
-        hour: 'numeric',
-        minute: 'numeric'
-    });
-    const dataCompleta = `${diaDaSemana} (${data}) às ${hora}`;
+    const dataCompleta = gerarDiaDaSemana();
     
     const itemData = document.createElement('p');
     itemData.classList.add('texto-data');
